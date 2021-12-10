@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
+
+    <main>
+        <div id="search-inputs">
+            <form id="city-search-form">
+                <label for="cityName">Search for a City:</label><br>
+                <input type="text" id="cityName" name="cityName" value="" placeholder="Seattle"><br>
+                <input type="submit" value="Search">
+            </form>
+
+            <hr>
+
+            <div id="searchHistory">
+                <!-- Buttons for previous city searches are dynamically written buttons -->
+            </div>
+        </div>
+
+        <div id="search-results">
+            <div id="todaysWeather">
+                <!-- Dynamically populated box -->
+            </div>
+
+            <div id="fiveDayForecast">
+                <!-- Dynamically populated 5 day box -->
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
