@@ -4,6 +4,7 @@ var searchButtonEl = $('#search-button');
 var cityNameSubmissionEl = $('#cityName');
 var todaysWeatherEl = $('#todaysWeather');
 var fiveDayForecastEl = $('#fiveDayForecast');
+var fiveDayForecastTitleEl = $('#fiveDayForecastTitle');
 var searchHistoryEl = $('#searchHistory');
 
 // Event listener functions:
@@ -12,6 +13,7 @@ var searchHistoryEl = $('#searchHistory');
 searchButtonEl.on('click', function(){
     todaysWeatherEl.html('');
     fiveDayForecastEl.html('');
+    fiveDayForecastTitleEl.html('');
     geoData(cityNameSubmissionEl.val())
     previousSearchButtons();
 })
@@ -20,6 +22,7 @@ searchButtonEl.on('click', function(){
 searchHistoryEl.on('click',function(event){
     todaysWeatherEl.html('');
     fiveDayForecastEl.html('');
+    fiveDayForecastTitleEl.html('');
     var previousSearch = event.target.innerText;
     geoData(previousSearch);
 })
@@ -72,6 +75,9 @@ function fetchOneCall (lat, lon, city) {
 // Prints Today's Weather
 function renderCurrentWeather (data, city) {
 
+    // Makes todaysWeather div visibile
+    todaysWeatherEl.removeClass("invisible");
+
     // Print location, today's date, weather icon, wind speed, and humidity
     todaysWeatherEl.append(`
         <h2>${city} (${moment().format('L')}) <img src="http://openweathermap.org/img/w/${data.current.weather[0].icon}.png" alt="${data.current.weather[0].description}"></h2>
@@ -113,11 +119,14 @@ function renderCurrentWeather (data, city) {
 
 // Prints the weather for the next few days
 function renderFiveDayForecast (data) {
+    fiveDayForecastTitleEl.append(`
+        <h2>5-Day Forecast:</h2>
+    `)
     for (var i = 0; i < 5; i++){
         // Print date, weather icon, temp, wind speed, and humidity
         fiveDayForecastEl.append(`
-            <div id="forecast-day-${i}">
-                <h3>${moment().add(i + 1, 'days').calendar()}</h3>
+            <div id="forecast-day-${i}" class="col border bg-dark text-white">
+                <h3>${moment().add(i + 1, 'days').format('L')}</h3>
                 <img src="http://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png" alt="${data.daily[i].weather[0].description}">
                 <p>Temp: ${data.daily[i].temp.day}°F</p>
                 <p>Wind: ${data.daily[i].wind_speed} MPH</p>
@@ -130,6 +139,6 @@ function renderFiveDayForecast (data) {
 // Adds the previous searches as buttons below the search button
 function previousSearchButtons () {
     searchHistoryEl.append(`
-        <button>${cityNameSubmissionEl.val()}</button>
+        <button type="button" class="btn btn-secondary col">${cityNameSubmissionEl.val()}</button><br><br>
     `)
 }

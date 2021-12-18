@@ -65,3 +65,5 @@ function fetchOneCall (lat, lon) {
     exclude minutely, hourly
 
 Print/Render the weather data to the page
+
+https://api.openweathermap.org/data/2.5/onecall?lat=47.6038&lon=-122.3301&exclude=minutely,hourly&units=imperial&appid=abd3df57a4ab15ebd0330fb0c538c405
