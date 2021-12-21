@@ -127,7 +127,7 @@ function renderFiveDayForecast (data) {
         fiveDayForecastEl.append(`
             <div id="forecast-day-${i}" class="col border bg-dark text-white">
                 <h3>${moment().add(i + 1, 'days').format('L')}</h3>
-                <img src="http://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png" alt="${data.daily[i].weather[0].description}">
+                <img src="https://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png" alt="${data.daily[i].weather[0].description}">
                 <p>Temp: ${data.daily[i].temp.day}°F</p>
                 <p>Wind: ${data.daily[i].wind_speed} MPH</p>
                 <p>Humidity: ${data.daily[i].humidity} %</p>
