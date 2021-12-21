@@ -33,7 +33,7 @@ function geoData (city) {
 
     
     // API Key: abd3df57a4ab15ebd0330fb0c538c405
-    var url = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=abd3df57a4ab15ebd0330fb0c538c405";
+    var url = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=abd3df57a4ab15ebd0330fb0c538c405";
 
     //console.log(cityNameSubmissionEl.val());
 
@@ -80,7 +80,7 @@ function renderCurrentWeather (data, city) {
 
     // Print location, today's date, weather icon, wind speed, and humidity
     todaysWeatherEl.append(`
-        <h2>${city} (${moment().format('L')}) <img src="http://openweathermap.org/img/w/${data.current.weather[0].icon}.png" alt="${data.current.weather[0].description}"></h2>
+        <h2>${city} (${moment().format('L')}) <img src="https://openweathermap.org/img/w/${data.current.weather[0].icon}.png" alt="${data.current.weather[0].description}"></h2>
         <p>Temp: ${data.current.temp}°F</p>
         <p>Wind: ${data.current.wind_speed} MPH</p>
         <p>Humidity: ${data.current.humidity} %</p>
